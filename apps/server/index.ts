@@ -1,5 +1,6 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
+import { setUpListners } from "./setUpListners";
 
 const PORT = process.env.PORT || 8080;
 
@@ -13,12 +14,8 @@ const io = new Server(server, {
   },
 });
 
-io.on("connection", () => {
-  console.log("Someone is connected!");
-});
 
-
-
+setUpListners(io);
 
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
